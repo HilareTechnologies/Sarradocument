@@ -7,7 +7,6 @@ const pdfSource = new Blob([fs.readFileSync(originalPdfPath)]);
 const fileType = "blob"; // or 'blob' based on your input type
 
 ExtractImages({ pdf: pdfSource, fileType: fileType }).then((images) => {
-  console.log(images);
   var imgName = 0;
   var filename;
   images.forEach(async (image) => {
