@@ -13,7 +13,8 @@ ExtractImages({ pdf: pdfSource, fileType: fileType }).then((images) => {
     var imgType = image.imageType.split("/")[1];
     console.log(image.url); // Blob URL for the image
     // You can use the blob URL to display the image or download it
-    filename = 'rendu/downloaded_image'+imgName+"."+imgType;
+    filename = await 'rendu/downloaded_image'+imgName+"."+imgType;
+    imgName+=1;
     console.log(filename);
     fs.writeFileSync(filename, Buffer.from(await image.blob.arrayBuffer()));
     console.log('Image downloaded successfully.');
