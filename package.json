@@ -1,0 +1,19 @@
+{
+  "name": "projet-stage",
+  "version": "1.0.0",
+  "description": "Test d'utilisation de l'API NodeJS de OneDrive",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Tany",
+  "license": "ISC",
+  "dependencies": {
+    "docx-pdf": "^0.0.1",
+    "fit-curve": "^0.2.0",
+    "fs": "^0.0.1-security",
+    "pdf-extractor": "^2.0.0",
+    "pdf-image-extractor": "^2.0.8",
+    "pdfjs-dist": "^4.1.392"
+  }
+}
