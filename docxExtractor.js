@@ -5,4 +5,4 @@ const [, , originalDocxPath] = process.argv;
 const commande = 'docx-images extract --docx '+originalDocxPath+' --output-dir rendu --opts-module STUB.js';
 
 const output = execSync(commande, { encoding: 'utf-8' });  // the default is 'buffer'
-console.log('Output was:\n', output);
+console.log('Output was:\n', output); 
