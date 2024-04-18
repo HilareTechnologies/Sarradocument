@@ -1,0 +1,1 @@
+//** STUB pour que le programme se lance */
