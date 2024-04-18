@@ -19,4 +19,6 @@ ExtractImages({ pdf: pdfSource, fileType: fileType }).then((images) => {
     console.log('Image downloaded successfully.');
     
   });
+}).catch((err)=>{
+  console.error(err);
 });
