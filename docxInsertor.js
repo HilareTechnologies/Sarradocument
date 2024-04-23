@@ -12,7 +12,7 @@ async function Insertor(){
 
     fs.readdir(dir, async (err, files) => {
         console.log(files.length);
-        for(let i =1;i*2<=files.length;i++){
+        for(let i =1;i<=files.length;i++){
             
             await docxImager.replaceWithLocalImage('word/media/image'+i+'.png', i, 'png');
         }
