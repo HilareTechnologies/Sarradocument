@@ -2,7 +2,7 @@
   "name": "projet-stage",
   "version": "1.0.0",
   "description": "Test d'utilisation de l'API NodeJS de OneDrive",
-  "main": "index.js",
+  "main": "docxInsertor.js",
   "scripts": {
     "test": "node server.js"
   },
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "docx-pdf": "^0.0.1",
-    "docximager": "^0.0.4",
+    "docximager": "file:../repo-github/DocxImager",
     "fit-curve": "^0.2.0",
     "fs": "^0.0.1-security",
     "jimp": "^0.22.12",

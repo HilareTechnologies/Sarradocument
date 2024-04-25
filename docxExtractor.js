@@ -8,13 +8,13 @@ const commande = 'docx-images extract --docx '+originalDocxPath+' --output-dir .
 const output = execSync(commande, { encoding: 'utf-8' });  // the default is 'buffer'
 console.log('Output was:\n', output);
 
-const dir = 'word/media';
+const dir = 'rendu/word/media';
 
 fs.readdir(dir, async (err, files) => {
     console.log(files.length);
     for(let i =1;i*2<=files.length;i++){
         
-        fs.unlink('word/media/image'+i+'.1.png', (err) => {
+        fs.unlink(dir+'/image'+i+'.1.png', (err) => {
             if (err) {
                 // Handle specific error if any
                 if (err.code === 'ENOENT') {

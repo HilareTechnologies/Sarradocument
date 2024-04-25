@@ -1,26 +1,29 @@
-const {DocxImager} = require('docxImager');
+const DocxImager = require('docxImager');
 const fs = require('fs');
 
 let docxImager = new DocxImager();
 
 const [, , originalDocxPath] = process.argv;
 
-async function Insertor(){
+function Insertor(){
 
-    await docxImager.load(originalDocxPath);
-    const dir = 'word/media';
+    docxImager.load(originalDocxPath);
+    const dir = 'rendu/converti';
 
-    fs.readdir(dir, async (err, files) => {
+    
+    fs.readdir(dir, (err, files) => {
         console.log(files.length);
-        for(let i =1;i<=files.length;i++){
-            
-            await docxImager.replaceWithLocalImage('word/media/image'+i+'.png', i, 'png');
-        }
+        files.forEach(async (file) =>{
+            let type = file.substring(file.length - 3);
+            let id = file.match(/\d/g);
+            await docxImager.replaceWithLocalImage(dir+'/'+file, id, 'png', type);
+        });
+
     });
 
     
-    setTimeout(async () => {
-        await docxImager.save('new_docx.docx');
+    setTimeout( () => {
+        docxImager.save('new_docx.docx');
     }, 100);
 }   
 
