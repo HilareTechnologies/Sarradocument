@@ -8,7 +8,7 @@ const commande = 'docx-images extract --docx '+originalDocxPath+' --output-dir .
 const output = execSync(commande, { encoding: 'utf-8' });  // the default is 'buffer'
 console.log('Output was:\n', output);
 
-const dir = 'rendu/word/media';
+const dir = 'word/media';
 
 fs.readdir(dir, async (err, files) => {
     console.log(files.length);
