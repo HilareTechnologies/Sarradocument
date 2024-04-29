@@ -11,13 +11,19 @@ function Insertor(){
     const dir = 'rendu/converti';
 
     
-    fs.readdir(dir, (err, files) => {
+    fs.readdir(dir, async (err, files) => {
         console.log(files.length);
-        files.forEach(async (file) =>{
+        // files.forEach(async (file) =>{
+        //     let type = file.substring(file.length - 3);
+        //     let id = file.match(/\d/g);
+        //     await docxImager.replaceWithLocalImage(dir+'/'+file, id, 'png', type);
+        // });
+
+        for(file of files){
             let type = file.substring(file.length - 3);
             let id = file.match(/\d/g);
             await docxImager.replaceWithLocalImage(dir+'/'+file, id, 'png', type);
-        });
+        }
 
     });
 
