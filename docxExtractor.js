@@ -1,3 +1,23 @@
+const DocxImager = require('docxImager');
+const fs = require('fs');
+
+let docxImager = new DocxImager();
+
+const [, , originalDocxPath] = process.argv;
+
+function Extractor(){
+
+    docxImager.load(originalDocxPath);
+    const dir = 'word/media';
+
+    setTimeout( () => {
+        docxImager.extractLocalImage(dir);
+    }, 100);
+    
+}   
+
+Extractor();
+/*
 const execSync = require('child_process').execSync;
 const fs = require('fs');
 // import { execSync } from 'child_process';  // replace ^ if using ES modules
@@ -28,3 +48,4 @@ fs.readdir(dir, async (err, files) => {
         });
     }
 });
+*/
