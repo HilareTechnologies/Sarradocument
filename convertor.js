@@ -3,7 +3,7 @@ const Jimp = require('jimp');
 
 const [, , originalPdfPath] = process.argv;
 
-let fileRendu = 'rendu/converti'; 
+const fileRendu = 'rendu/converti'; 
 
 fs.readdir(fileRendu, async (err,files)=> {
     for(file of files){

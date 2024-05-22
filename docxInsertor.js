@@ -4,11 +4,12 @@ const fs = require('fs');
 let docxImager = new DocxImager();
 
 const [, , originalDocxPath] = process.argv;
+const dir = 'rendu/converti';
 
 function Insertor(){
 
     docxImager.load(originalDocxPath);
-    const dir = 'rendu/converti';
+    
 
     
     fs.readdir(dir, async (err, files) => {
