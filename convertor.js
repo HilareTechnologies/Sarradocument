@@ -6,7 +6,7 @@ const [, , originalPdfPath] = process.argv;
 const fileRendu = 'rendu/converti'; 
 
 fs.readdir(fileRendu, async (err,files)=> {
-    for(file of files){
+    for(let file of files){
         fs.unlink(fileRendu+"/"+file, (err) => {
             if (err) {
                 // Handle specific error if any
@@ -23,7 +23,7 @@ fs.readdir(fileRendu, async (err,files)=> {
 });
 
 fs.readdir(originalPdfPath,async (err, files) => {
-    for(file of files){
+    for(let file of files){
         const image = await Jimp.read(originalPdfPath+"/"+file);
 
         let name = file.split('.')[0];

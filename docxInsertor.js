@@ -15,7 +15,7 @@ function Insertor(){
     fs.readdir(dir, async (err, files) => {
         console.log(files.length);
 
-        for(file of files){
+        for(let file of files){
             let type = file.substring(file.length - 3);
             let id = file.match(/\d/g);
             await docxImager.replaceWithLocalImage(dir+'/'+file, id, 'png', type);

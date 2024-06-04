@@ -1,5 +1,4 @@
 const DocxImager = require('docxImager');
-const fs = require('fs');
 
 let docxImager = new DocxImager();
 
