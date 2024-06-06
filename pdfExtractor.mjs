@@ -1,27 +1,28 @@
-//const { mupdf } = require('mupdf');
 import * as mupdf from "mupdf";
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const fs = require('fs');
 
-const [, , originalPdfPath] = process.argv;
+const [, , originalPdfPath] = process.argv;     // path du fichier pdf 
 
-let document = mupdf.Document.openDocument(fs.readFileSync(originalPdfPath), "application/pdf");
+//chargement du document par la librairie mupdf 
+let document = mupdf.Document.openDocument(fs.readFileSync(originalPdfPath), "application/pdf"); 
 
-let i = 0
+let pageIndex = 0
 
-let ctnImage = 1;
+let imgIndex = 1;
 
-while (i < document.countPages()) {
-    const page = document.loadPage(i)
-    page.toStructuredText("preserve-images").walk({
-        onImageBlock(bbox, matrix, image) {
-            
-            console.log(`onImageBlock, bbox=${bbox}, transform=${matrix}, image=${image}`);
-            let pixmap = image.toPixmap();
-            if (!pixmap.getAlpha()){
-                let filename = `image${ctnImage}.jpg`;
-                let buffer = pixmap.asPNG();
+// boucle sur les pages du document 
+while (pageIndex < document.countPages()) {
+    const page = document.loadPage(pageIndex) // charge la page
+
+    page.toStructuredText("preserve-images").walk({ // boucle sur tout les element de la page
+        onImageBlock(bbox, matrix, image) { // le programme trouve une image
+            let pixmap = image.toPixmap(); // transforme l'image en pixmap
+            if (!pixmap.getAlpha()){ // si l'image n'est pas transparente
+                let filename = `image${imgIndex}.jpg`; 
+                let buffer = pixmap.asJPEG(80); // transforme la pixmap en buffer
+                // enregirstre l'image
                 fs.writeFile("./pdf/media/"+filename, buffer, err => {
                     if (err) {
                         console.error(err);
@@ -31,9 +32,9 @@ while (i < document.countPages()) {
                 });
                 console.log("image saved !");
             }
-            ctnImage ++;
+            imgIndex ++;
 
         }
     })
-    i++
+    pageIndex++
 }
